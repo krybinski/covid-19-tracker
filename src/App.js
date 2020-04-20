@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Cards, Chart, CountryPicker } from './components';
 import styles from './App.module.css';
@@ -6,21 +6,28 @@ import { fetchData } from './api';
 
 const App = () => {
   const [data, setData] = useState({});
+  const [country, setCountry] = useState('');
 
   useEffect(() => {
     async function handleFetch() {
-      const data = await fetchData();
-      setData(data);
+      setData(await fetchData());
     }
 
     handleFetch();
   }, []);
 
+  const handleCountryChange = async (country) => {
+    const fetchedCountries = await fetchData(country);
+
+    setData(fetchedCountries);
+    setCountry(country);
+  };
+
   return (
     <div className={styles.container}>
       <Cards data={data} />
-      <CountryPicker />
-      <Chart />
+      <CountryPicker handleCountryChange={handleCountryChange} />
+      <Chart data={data} country={country} />
     </div>
   );
 };

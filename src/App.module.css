@@ -13,4 +13,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .container {
+    margin: 0 10%;
+  }
 }
