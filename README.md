@@ -1,3 +1,8 @@
 # COVID-19 Tracker Application
 
-Demo: https://wonderful-kalam-096ae3.netlify.app/
+Demo: https://covid19-tracker-app-react.netlify.app/
+
+How to start:
+
+- `npm install`
+- `npm start`
